@@ -66,7 +66,6 @@ export default class Carousel {
     }
     if (target.closest('.carousel__arrow_left')) {
       this.prev();
-      return;
     }
   }
 
@@ -88,13 +87,13 @@ export default class Carousel {
     let offset = -this.elem.offsetWidth * this.currentSlideNumber;
     this.sub('inner').style.transform = `translateX(${offset}px)`;
 
-    if (this.currentSlideNumber == this.slides.length - 1) {
+    if (this.currentSlideNumber === this.slides.length - 1) {
       this.sub('arrow_right').style.display = 'none';
     } else {
       this.sub('arrow_right').style.display = '';
     }
 
-    if (this.currentSlideNumber == 0) {
+    if (this.currentSlideNumber === 0) {
       this.sub('arrow_left').style.display = 'none';
     } else {
       this.sub('arrow_left').style.display = '';

@@ -14,7 +14,7 @@ export default class Cart {
 
   addProduct(product) {
     let cartItem = this.cartItems.find(
-      item => item.product.id == product.id
+      item => item.product.id === product.id
     );
     if (!cartItem) {
       cartItem = {
@@ -30,10 +30,10 @@ export default class Cart {
   }
 
   updateProductCount(productId, amount) {
-    let cartItem = this.cartItems.find(item => item.product.id == productId);
+    let cartItem = this.cartItems.find(item => item.product.id === productId);
     cartItem.count += amount;
 
-    if (cartItem.count == 0) {
+    if (cartItem.count === 0) {
       this.cartItems.splice(this.cartItems.indexOf(cartItem), 1);
     }
 
@@ -61,18 +61,18 @@ export default class Cart {
       product.id
     }">
       <div class="cart-product__img">
-        <img src="../assets/images/products/${product.image}" alt="product">
+        <img src="../../assets/images/products/${product.image}" alt="product">
       </div>
       <div class="cart-product__info">
         <div class="cart-product__title">${escapeHtml(product.name)}</div>
         <div class="cart-product__price-wrap">
           <div class="cart-counter">
             <button type="button" class="cart-counter__button cart-counter__button_minus">
-              <img src="../assets/images/icons/square-minus-icon.svg" alt="minus">
+              <img src="../../assets/images/icons/square-minus-icon.svg" alt="minus">
             </button>
             <span class="cart-counter__count">${count}</span>
             <button type="button" class="cart-counter__button cart-counter__button_plus">
-              <img src="../assets/images/icons/square-plus-icon.svg" alt="plus">
+              <img src="../../assets/images/icons/square-plus-icon.svg" alt="plus">
             </button>
           </div>
           <div class="cart-product__price">€${product.price.toFixed(2)}</div>
@@ -152,12 +152,12 @@ export default class Cart {
       return;
     }
 
-    if (this.cartItems.length == 0) {
+    if (this.cartItems.length === 0) {
       this.modal.close();
       return;
     }
 
-    if (count == 0) {
+    if (count === 0) {
       this.modalBody.querySelector(`[data-product-id="${product.id}"]`).remove();
     } else {
       this.modalBody.querySelector(`[data-product-id="${product.id}"] .cart-counter__count`).innerHTML = count;
@@ -192,7 +192,7 @@ export default class Cart {
         <p>
           Order successful! Your order is being cooked :) <br>
           We’ll notify you about delivery time shortly.<br>
-          <img src="/assets/images/delivery.gif">
+          <img src="/assets/images/delivery.gif" />
         </p>
       </div>
       `;
